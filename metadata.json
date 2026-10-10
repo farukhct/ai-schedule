@@ -1,0 +1,6 @@
+{
+  "name": "Justice Schedule",
+  "description": "Offline Court and Justice Schedule Management Application with local SQLite database, advanced search, filtering, report printing, and user management.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

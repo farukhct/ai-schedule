@@ -1,0 +1,275 @@
+@import "tailwindcss";
+
+:root {
+  --ibas-primary: #006FB8;
+  --ibas-primary-dark: #005a96;
+  --ibas-navy: #022F62;
+  --ibas-deep-navy: #0e2a47;
+  --ibas-teal: #2C8CBC;
+  --ibas-accent-yellow: #D5F51F;
+  --ibas-input-bg: #D9DAE6;
+  --ibas-input-text: #0068B3;
+  --ibas-border-blue: #66A0C7;
+  --ibas-body-bg: #f4f6fa;
+}
+
+@layer base {
+  body {
+    @apply bg-slate-100 text-slate-900 antialiased selection:bg-[#006FB8] selection:text-white;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "SolaimanLipi", "Kalpurush";
+  }
+}
+
+/* iBAS Spectrum Radial Gradient Background */
+.ibas-spectrum-bg {
+  background-color: #0e2a47;
+  background-image: 
+    radial-gradient(ellipse at 0% 50%, #0e2a47 0%, rgba(0, 128, 184, 0.95) 100%),
+    linear-gradient(135deg, rgba(2, 47, 98, 0.6) 0%, rgba(14, 42, 71, 0.8) 100%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* iBAS Login Card styling */
+.ibas-login-card {
+  background-color: rgba(2, 47, 98, 0.78);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(102, 160, 199, 0.35);
+  border-radius: 8px;
+}
+
+/* iBAS Input Field styling */
+.ibas-input {
+  background-color: #D9DAE6 !important;
+  color: #0068B3 !important;
+  border: 1px solid #b8bacc !important;
+  border-radius: 4px;
+}
+
+.ibas-input::placeholder {
+  color: #0068B3 !important;
+  opacity: 0.75;
+}
+
+.ibas-input:focus {
+  outline: none;
+  border-color: #006FB8 !important;
+  box-shadow: 0 0 0 2px rgba(0, 111, 184, 0.25);
+}
+
+/* iBAS Buttons */
+.btn-ibas-primary {
+  background-color: #006FB8;
+  color: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.btn-ibas-primary:hover {
+  background-color: #005a96;
+}
+
+.btn-ibas-extension {
+  background-color: rgba(2, 47, 98, 0.55);
+  border: 1px solid #66A0C7;
+  color: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.btn-ibas-extension:hover {
+  background-color: rgba(2, 47, 98, 0.85);
+  border-color: #a4c9e3;
+  color: #ffffff;
+}
+
+.btn-ibas-highlight {
+  background-color: #2C8CBC;
+  color: #D5F51F !important;
+  border: 1px solid #1f6b94;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-ibas-highlight:hover {
+  background-color: #24759e;
+  color: #ffffff !important;
+}
+
+/* Marquee scrolling ticker */
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+  background-color: rgba(2, 47, 98, 0.65);
+  border: 1px solid rgba(102, 160, 199, 0.3);
+  border-radius: 6px;
+}
+
+.marquee-text {
+  color: #D5F51F;
+  display: inline-block;
+  padding-left: 100%;
+  animation: ibas-marquee 38s linear infinite;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.marquee-container:hover .marquee-text {
+  animation-play-state: paused;
+}
+
+@keyframes ibas-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Blinking text effect from iBAS */
+@keyframes blink-effect {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.blink-text {
+  color: #ff4d4d;
+  font-weight: bold;
+  animation: blink-effect 2s linear infinite;
+}
+
+/* Print specific styles */
+@media print {
+  @page {
+    size: auto;
+    margin: 12mm 10mm 15mm 10mm;
+  }
+
+  html, body {
+    height: auto !important;
+    overflow: visible !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 11pt;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .no-print,
+  nav,
+  aside,
+  header,
+  main,
+  footer,
+  .toast-container,
+  button:not(.allow-print),
+  .search-panel,
+  .action-column,
+  .pagination-bar,
+  .form-container {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .print-modal-overlay {
+    position: static !important;
+    inset: auto !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    height: auto !important;
+    max-height: none !important;
+    display: block !important;
+  }
+
+  .print-modal-content {
+    position: static !important;
+    max-height: none !important;
+    height: auto !important;
+    overflow: visible !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .print-scroll-container {
+    overflow: visible !important;
+    height: auto !important;
+    max-height: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+  }
+
+  .printable-area {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    page-break-inside: auto !important;
+  }
+
+  tr {
+    page-break-inside: avoid !important;
+    page-break-after: auto !important;
+  }
+
+  thead {
+    display: table-header-group !important;
+  }
+
+  th {
+    background-color: #f1f5f9 !important;
+    color: #0f172a !important;
+    border: 1px solid #000000 !important;
+    padding: 6px 8px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    font-size: 9.5pt !important;
+  }
+
+  td {
+    border: 1px solid #475569 !important;
+    padding: 6px 8px !important;
+    font-size: 9.5pt !important;
+    color: #000000 !important;
+    vertical-align: top !important;
+  }
+}
+
+/* Custom crisp scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #006FB8;
+}
